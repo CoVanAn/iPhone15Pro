@@ -48,7 +48,9 @@ const VideoCarousel = () => {
             }
         }
     }, [startPlay, videoId, isPlaying, loadedData]);
+
     const handleLoadedMetadata = (i, e) => setLoadedData((pre) => [...pre, e])
+
     useEffect(() => {
         let currentProgress = 0;
         let span = videoSpanRef.current;
@@ -98,13 +100,24 @@ const VideoCarousel = () => {
     const handleProcess = (type, i) => {
         switch (type) {
             case 'video-end':
-                setVideo((prevVideo) => ({ ...prevVideo, isEnd: true, videoId: i + 1 }))
+                setVideo((prevVideo) => ({
+                    ...prevVideo,
+                    isEnd: true,
+                    videoId: i + 1
+                }))
                 break;
             case 'video-last':
-                setVideo((prevVideo) => ({ ...prevVideo, isLastVideo: true }))
+                setVideo((prevVideo) => ({
+                    ...prevVideo,
+                    isLastVideo: true
+                }))
                 break;
             case 'video-reset':
-                setVideo((prevVideo) => ({ ...prevVideo, isLastVideo: false, videoId: 0 }))
+                setVideo((prevVideo) => ({
+                    ...prevVideo,
+                    isLastVideo: false,
+                    videoId: 0
+                }))
                 break;
             case 'play':
                 setVideo((prevVideo) => ({
